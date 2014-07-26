@@ -1,15 +1,12 @@
 # Dockerfile for adding etcd to a base image
 
-FROM ubuntu:latest
+FROM centos:latest
 
 MAINTAINER Vincent Palmer <shift-gh@someone.section.me>
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN sed 's/main$/main universe/' -i /etc/apt/sources.list
-
-RUN apt-get update && apt-get install -y software-properties-common python-software-properties
-RUN apt-get install -y curl
+RUN yum install -y curl tar
 
 RUN mkdir /tmp/etcd
 RUN curl --silent https://api.github.com/repos/coreos/etcd/releases | sed -n 's|.*\"tag_name\": \"\(.*\)\".*|\1|p' | head -n 1 > /tmp/etcd_version
