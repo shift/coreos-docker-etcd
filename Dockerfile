@@ -4,7 +4,7 @@ FROM ubuntu:latest
 
 MAINTAINER Vincent Palmer <shift-gh@someone.section.me>
 
-ENV ETCD_VERSION v0.4.5
+ENV ETCD_VERSION `curl --silent https://api.github.com/repos/coreos/etcd/releases | sed -n 's|\"tag_name\": \"\(.*\)\",|\1|p' | head -n 1`
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN sed 's/main$/main universe/' -i /etc/apt/sources.list
