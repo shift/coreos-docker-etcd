@@ -1,6 +1,6 @@
 # Dockerfile for adding etcd to a base image
 
-FROM ubuntu-upstart:latest
+FROM ubuntu:latest
 
 MAINTAINER Vincent Palmer <shift-gh@someone.section.me>
 
